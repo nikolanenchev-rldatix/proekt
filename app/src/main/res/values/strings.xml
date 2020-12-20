@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">parking</string>
     <string name="choose_time">Изберете град:</string>
+    <string name="textview">TextView</string>
+    <string name="rezerviraj">rezerviraj</string>
+    <string name="uspesna_rezervacija">Uspesna rezervacija</string>
+    <string name="navigacija">Navigacija</string>
     <string-array name="Vreme">
         <item>00-01</item>
         <item>01-02</item>
@@ -29,6 +33,16 @@
     <string-array name="Gradovi">
         <item>Tetovo</item>
         <item>Skopje</item>
+        <item>Strumica</item>
+        <item>Veles</item>
+        <item>Bitola</item>
+        <item>Gostivar</item>
+        <item>Ohrid</item>
+    </string-array>
+    <string-array name="parking">
+        <item>Kapistec</item>
+        <item>Centar</item>
+        <item>Tetovo</item>
         <item>Strumica</item>
         <item>Veles</item>
         <item>Bitola</item>

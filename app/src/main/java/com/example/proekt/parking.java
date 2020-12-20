@@ -6,25 +6,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
-public class CityActivity extends AppCompatActivity {
+public class parking extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    String[] s1;
-    int[] images = {R.drawable.tetovo,R.drawable.strumica,R.drawable.ohrid,
-    R.drawable.skopje,R.drawable.gostivar,R.drawable.bitola,R.drawable.veles};
+    String s1[];
+    int image[]={R.drawable.parking};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_city);
-        recyclerView =(RecyclerView) findViewById(R.id.recyclerView);
+        setContentView(R.layout.activity_parking);
+        recyclerView =(RecyclerView) findViewById(R.id.recyclerView2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        s1 = getResources().getStringArray(R.array.Gradovi);
-        MyAdapter myAdapter = new MyAdapter(this, s1, images);
-        recyclerView.setAdapter(myAdapter);
+        s1 = getResources().getStringArray(R.array.parking);
+        MyAdapter1 myAdapter1 = new MyAdapter1(this, s1);
+        recyclerView.setAdapter(myAdapter1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
