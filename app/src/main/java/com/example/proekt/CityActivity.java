@@ -8,23 +8,31 @@ import android.os.Bundle;
 
 public class CityActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    String[] s1;
-    int[] images = {R.drawable.tetovo,R.drawable.strumica,R.drawable.ohrid,
-    R.drawable.skopje,R.drawable.gostivar,R.drawable.bitola,R.drawable.veles};
-
+    private RecyclerView recyclerView;
+    private DBHelper myDB;
+    private MyAdapter.RecyclerViewClickListener listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
+        myDB=new DBHelper(this);
         recyclerView =(RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        s1 = getResources().getStringArray(R.array.Gradovi);
-        MyAdapter myAdapter = new MyAdapter(this, s1, images);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        String user="";
+        Bundle extras=getIntent().getExtras();
+        if(extras != null){
+            user=extras.getString("user");
+        }
+        setAdapter(user);
+
+
+    }
+    private void setAdapter(String user){
+        MyAdapter adapter=new MyAdapter(this,myDB,R.layout.my_row,listener,user);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
     }
 }

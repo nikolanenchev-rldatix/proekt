@@ -4,26 +4,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 public class parking extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    String s1[];
-    int image[]={R.drawable.parking};
+    private RecyclerView recyclerView;
+    private DBHelper myDB;
+    private pAdapter.RecyclerViewClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking);
-        recyclerView =(RecyclerView) findViewById(R.id.recyclerView2);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        s1 = getResources().getStringArray(R.array.parking);
-        MyAdapter1 myAdapter1 = new MyAdapter1(this, s1);
-        recyclerView.setAdapter(myAdapter1);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        myDB = new DBHelper(this);
+        String city = "";
+        String date = "";
+        String hour = "";
+        String user = "";
+        Intent intent = getIntent();
+        city = intent.getStringExtra("city");
+        date = intent.getStringExtra("date");
+        hour = intent.getStringExtra("hour");
+        user = intent.getStringExtra("user");
+        recyclerView= findViewById(R.id.recyclerView2);
+        setAdapter(city, date, hour, user);
     }
+       private void setAdapter(String city, String date, String hour, String user){
+        pAdapter adapter= new pAdapter(this,myDB,R.layout.my_row1,listener,city,date,hour,user);
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+       }
 }

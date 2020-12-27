@@ -5,6 +5,11 @@
     <string name="rezerviraj">rezerviraj</string>
     <string name="uspesna_rezervacija">Uspesna rezervacija</string>
     <string name="navigacija">Navigacija</string>
+    <string name="title">Title</string>
+    <string name="grad">grad</string>
+    <string name="broj">број</string>
+    <string name="Broj">Број</string>
+    <string name="rezervirajt">Резервирај тука</string>
     <string-array name="Vreme">
         <item>00-01</item>
         <item>01-02</item>
@@ -49,4 +54,7 @@
         <item>Gostivar</item>
         <item>Ohrid</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time">Одберете време:</string>
 </resources>

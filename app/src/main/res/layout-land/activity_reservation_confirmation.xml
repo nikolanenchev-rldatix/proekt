@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReservationConfirmation">
+
+    <TextView
+        android:id="@+id/textt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text=" вашата резервација е успешна "
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.proekt.FC1"
+        android:layout_width="wrap_content"
+        android:layout_height="268dp"
+        android:layout_below="@id/textt"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        tools:layout="@layout/fragment_c1" />
+
+    <Button
+        android:id="@+id/potvrda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fragment1"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="215dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/textWhite"
+        android:onClick="functionConfirm"
+        android:text="потврди"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary" />
+
+    <fragment
+        android:id="@+id/fragment3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_maps"
+        android:name="com.example.proekt.MapsFragment"
+        android:layout_toRightOf="@id/fragment1"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"/>
+
+</RelativeLayout>
