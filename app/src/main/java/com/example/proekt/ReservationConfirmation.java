@@ -3,8 +3,11 @@ package com.example.proekt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -59,6 +62,20 @@ public class ReservationConfirmation extends AppCompatActivity {
 
         park2.setText(park);
 
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.my_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        Intent intent = new Intent(this, MyReservations.class);
+        startActivity(intent);
+        return true;
     }
 
     public void functionConfirm(View v){
@@ -68,17 +85,14 @@ public class ReservationConfirmation extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //   int rpu = db.numberResPerUser(user);
-                //   if (rpu < 3) {
                 Boolean insert = db.insertReservation(user, city, park, date, hour);
                 if (insert == true) {
                     Toast.makeText(getApplicationContext(), "Your reservation has been successfully made! ", Toast.LENGTH_SHORT).show();
                 }
-             /*   } else {
-                    Toast.makeText(getApplicationContext(), "Only 3 reservations are allowed per user!", Toast.LENGTH_SHORT).show();
-                } */
+
             }
         });
 
     }
+
 }

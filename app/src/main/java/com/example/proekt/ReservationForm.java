@@ -7,6 +7,8 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.sip.SipSession;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -58,6 +60,19 @@ public class ReservationForm extends AppCompatActivity {
         startActivity(i);
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.my_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        Intent intent = new Intent(this, MyReservations.class);
+        startActivity(intent);
+        return true;
     }
 }
 

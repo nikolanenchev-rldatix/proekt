@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyReservations">
+    <TextView
+        android:id="@+id/chosen_date_parking"
+        android:layout_width="wrap_content"
+        android:text="@string/all_of_your_reservations"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_reservations_list"
+        android:layout_width="388dp"
+        android:layout_height="685dp"
+        android:layout_marginTop="30dp"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

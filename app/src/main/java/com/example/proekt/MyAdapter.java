@@ -60,6 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.cityViewHolder> {
         return new cityViewHolder(v);
     }
 
+
     @Override
     public void onBindViewHolder(final cityViewHolder viewHolder, final int position){
 

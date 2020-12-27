@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="parking.db";
     private String username;
@@ -24,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.execSQL("Create table users(username text primary key,password text)");
         MyDB.execSQL("Create table city(cityname text primary key, citynumber int)");
         MyDB.execSQL("Create table park(parkName text primary key, cityNamee text,  parkSpaces int, takenSpaces int, lat double, long double)");
-
+        MyDB.execSQL("Create table myreservations(id int primary key, citynamee text,parknamee text,hour text, date text)");
         MyDB.execSQL("Create table reservation(rowid int primary key, userR text, cityR text, parkR text, dateR text, timeR text )");
         fillCityWithData(MyDB);
         fillParkWithData(MyDB);
@@ -146,6 +148,7 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop table if exists city");
         MyDB.execSQL("drop table if exists park");
         MyDB.execSQL("drop table if exists reservation");
+        MyDB.execSQL("drop table if exists myreservations");
         onCreate(MyDB);
     }
     public City query(int position) {
@@ -184,6 +187,28 @@ public class DBHelper extends SQLiteOpenHelper {
         return entry;
 
     }
+    public ArrayList<MyReservationsC> getReservations(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<MyReservationsC> reservation = new ArrayList<MyReservationsC>();
+        Cursor cursor = db.query("myreservations", null, null,
+                null, null, null, "ID" + " DESC", null);
+        int i=0;
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String cityname = cursor.getString(1);
+                String parkingname = cursor.getString(2);
+                String hour = cursor.getString(3);
+                String date = cursor.getString(4);
+                MyReservationsC pom = new MyReservationsC(cityname,parkingname,hour,date);
+                reservation.add(i,pom);
+                i++;
+            }
+            while (cursor.moveToNext());
+        }
+        return reservation;
+    }
+
+
     public long count() {
         SQLiteDatabase db = this.getReadableDatabase();
         return DatabaseUtils.queryNumEntries(this.getReadableDatabase(), "city");

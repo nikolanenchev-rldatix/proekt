@@ -20,6 +20,7 @@ public class FC1 extends Fragment {
     }
 
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -32,4 +33,5 @@ public class FC1 extends Fragment {
         // Inflate the activity_reservation_confirmation for this fragment
         return inflater.inflate(R.layout.fragment_c1, container, false);
     }
+
 }
